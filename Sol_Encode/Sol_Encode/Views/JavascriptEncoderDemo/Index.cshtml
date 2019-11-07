@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model Sol_Encode.Models.UserModel
+
+<h1>Index</h1>
+
+<form asp-controller="JavascriptEncoderDemo" asp-action="OnSubmit">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="txtFullName">Full Name</label>
+                    <input id="txtFullName" type="text" asp-for="FullName" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input id="btnSubmit" type="submit" class="btn btn-primary" value="Submit" />
+                @if (Model?.FullName!=null)
+                {
+                    <div id="divValue" data-value="@Html.Raw(Model.FullName)"></div>
+
+                    <div id="divDisplay"></div>
+                }
+            </div>
+
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        var value = $("#divValue").data("value");
+        console.log(value);
+
+        $("#divDisplay").html(value);
+
+    </script>
+
+ }
+
